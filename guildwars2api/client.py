@@ -1,7 +1,7 @@
 import requests
 
-import guildwars2api.api_2 as v2
-import guildwars2api.api_1 as v1
+import api_2 as v2
+import api_1 as v1
 
 class GuildWars2API(object):
     """
@@ -45,6 +45,9 @@ class GuildWars2API(object):
             self.colors = self._prepare(v2.Colors)
             self.files = self._prepare(v2.Files)
             self.specializations = self._prepare(v2.Specializations)
+            self.commerce = self._prepare(v2.Commerce)
+            self.commerce.listings = self._prepare(v2.Commerce.Listings)
+            self.achievements = self._prepare(v2.Achievements)
         elif (api_version =='v1'):
             self.items = self._prepare(v1.Items)
             self.recipes = self._prepare(v1.Recipes)

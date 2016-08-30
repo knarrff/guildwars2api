@@ -1,4 +1,4 @@
-from guildwars2api.resources import Resource, NoParamsMixin, NameLookupMixin
+from resources import Resource, NoParamsMixin, NameLookupMixin
 from math import floor
 
 # class Events(Resource):

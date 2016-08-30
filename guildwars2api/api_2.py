@@ -1,4 +1,4 @@
-from guildwars2api.resources import Resource, IDsLookupMixin, NoParamsMixin, IDAllMixin
+from resources import Resource, IDsLookupMixin, NoParamsMixin, IDAllMixin
 from requests import sessions
 
 
@@ -17,6 +17,11 @@ class Recipes(Resource, IDsLookupMixin):
     
     api_class = 'recipes'
     
+    def get_all(self):
+        return super(Recipes, self).get()
+
+    def get(self, ids):
+        return super(Recipes, self).get(ids=ids)
 
 class Items(Resource, IDsLookupMixin):
     """
@@ -218,3 +223,37 @@ class Specializations(Resource, IDsLookupMixin):
     
     api_class = 'specializations'
     
+class Commerce(Resource):
+    """
+    This resource returns information about the trading post
+    """
+
+    api_class = 'commcerce'
+
+    class Listings(Resource, IDsLookupMixin):
+        """
+        This resource returns information about listings on the trading post.
+        """
+
+        api_type = 'commerce'
+        api_class = 'listings'
+
+        def get_all(self):
+            return super(Commerce.Listings, self).get()
+
+        def get(self, ids):
+            return super(Commerce.Listings, self).get(ids=ids)
+
+class Achievements(Resource, IDsLookupMixin):
+    """
+    Returns information about achievements
+    """
+    
+    api_class = 'achievements'
+    
+    def get_all(self):
+        return super(Achievements, self).get()
+
+    def get(self, ids):
+        return super(Achievements, self).get(ids=ids)
+
